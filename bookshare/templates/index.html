@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}読んだ本を保存出来るサービス | Book Share{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block contents %}
+
+<div class="index-main-visual">
+  <div class="index-main-visual-content">
+    <p class="index-main-visual-text">
+      Book Share は読んだ本を投稿し共有出来るサービスです。
+    </p>
+    <p class="index-main-visual-name">
+      お気に入りの本をみんなで共有しよう！
+    </p>
+  </div>
+</div>
+
+<div class="index-main">
+  <div class="container">
+    <h2 class="main-text" >↓アカウント持ってない方はこちら↓</h2>
+      <p class="page"><a href="{% url 'account_signup' %}">Sign up</a></p>
+    <h2 class="main-text" >↓アカウント持っている方はこちら↓</h2>
+      <p class="page"><a href="{% url 'account_login' %}">Log In</a></p>
+  </div>
+</div>
+
+{% endblock %}

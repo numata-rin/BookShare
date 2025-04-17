@@ -1,0 +1,72 @@
+{% load static %}
+
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <link href="{% static 'css/one-page-wonder.css' %}" rel="stylesheet">
+
+  <!-- My style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <h1><a class="navbar-brand" href="{% url 'bookshare:index' %}">Book Share</a></h1>
+
+    <!--ナビゲーションバー-->
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li class="nav-list-item"><a class="{% block active_inquiry %}{% endblock %}"
+            href="{% url 'bookshare:inquiry' %}">Inquiry</a></li>
+
+        {% if user.is_authenticated %}
+        <li class="nav-list-item"><a class="{% block active_book_list %}{% endblock %}"
+            href="{% url 'bookshare:book_list' %}">Book List</a></li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <li class="nav-list-item"><a href="{% url 'account_logout' %}">Log Out</a></li>
+        {% else %}
+        <li class="nav-list-item"><a class="{% block active_signup %}{% endblock %}"
+            href="{% url 'account_signup' %}">Sign Up</li>
+        <li class="nav-list-item"><a class="{% block active_login %}{% endblock %}" href="{% url 'account_login' %}">Log
+            In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- メッセージ表示 -->
+  {% if messages %}
+  <div class="message-box">
+    <ul class="messages">
+      {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <main>
+  <!-- メインコンテンツ -->
+    {% block contents %}{% endblock %}
+  </main>
+
+  <!-- フッター -->
+  <footer>
+    <p>Book Share 2025</p>
+  </footer>
+
+</body>
+
+</html>

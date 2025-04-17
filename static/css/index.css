@@ -1,0 +1,38 @@
+.index-main-visual {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/bookshelf.avif);
+  background-size: cover;
+}
+
+.index-main-visual-content {
+  width: 100%;
+  height: 200px;
+  background-color: rgba( 0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.index-main-visual-text {
+  color: #fff;
+}
+
+.index-main-visual-name {
+  margin-top: 30px;
+  color: #fff;
+}
+
+.index-main .container {
+  padding-top: 120px;
+  text-align: center;
+}
+
+.index-main .main-text {
+  line-height: 3;
+}
+
+.page {
+  font-size: 20;
+}
